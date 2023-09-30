@@ -1,27 +1,30 @@
 const axios = require('axios');
 const {Temperaments} = require('../db')
+const {API_KEY} = process.env;
 
 const getAllTemps = async () => {
 
-    const datos = await Temperaments.findAll();
+    const tempsBD = await Temperaments.findAll();
 
-    if (datos.length === 0) {
+    if (tempsBD.length === 0) {
 
-        const response = await axios.get('https://api.thedogapi.com/v1/breeds');
-    
-        let temps = [];
-    
-        response.data.map((dog) => temps.push(dog.temperament) )
-    
-        temps = temps.filter(temp => temp !== null).join("").split(", ");
+        let temps = [];        
+        const response = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`);
+        response.data.map((dog) => temps.push(dog.temperament))
 
-        const uniqueTemps = [...new Set(temps)];
+        const sinNull = temps.filter((temp) => temp !== null);
+        const soloStrings = sinNull.join(",").trim().split(",");
+        const sinEspacios = soloStrings.map(temp => temp.trim());
+        const uniqueTemps = [...new Set(sinEspacios)];
+        const finalTemps = uniqueTemps.filter(temp => temp !== "").sort();
+  
+        finalTemps.forEach(temp => {
+            Temperaments.findOrCreate({where: {name: temp}})
+        })
 
-        const uniqueTempsObject = uniqueTemps.map((name) => ({name: name}));
-
-        await Temperaments.bulkCreate(uniqueTempsObject)
+    } else {
+        throw new Error('La base de datos de Temperaments ya existe')
     }
-
 };
 
 module.exports ={

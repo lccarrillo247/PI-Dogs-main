@@ -1,11 +1,23 @@
-const {createDogDB} = require('../controllers/dogControllers')
+const {createDogDB, getDogByName, getAllDogs, getDogById} = require('../controllers/dogControllers')
 
-const getDogsHandler = (req, res) => {
-    res.status(200).send('Vamos meeelooooos');
+const getDogsHandler = async (req, res) => {
+    const {name} = req.query;
+try {    
+    const response = name ? await getDogByName(name) : await getAllDogs();
+    res.status(200).json(response);
+} catch (error) {
+    res.status(500).json({error: error.message});
+}
 };
 
-const getDogByIdHandler = (req, res) => {
-    res.status(200).send('Trae el perro según el id de su raza');
+const getDogByIdHandler = async (req, res) => {
+    try {
+    const {idRaza} = req.params;
+    const dogById = await getDogById(idRaza);
+    res.status(200).json(dogById);
+} catch (error) {
+    res.status(500).json({error: error.message});
+}
 };
 
 const postDogHandler = async (req, res) => {
@@ -22,7 +34,6 @@ try {
 } catch (error) {
     res.status(500).json({error: error.message});
 }
-
 }
 
 module.exports ={

@@ -22,9 +22,12 @@ const { conn } = require('./src/db.js');
 
 const PORT = 3001;
 
+const {getAllTemps} = require('./src/controllers/tempControllers.js')
+
 // Syncing all the models at once.
-conn.sync({ force: true }).then(() => { // Poner en false para revisión, de forma que se guarden dos en BD
-  server.listen(PORT, () => {
+conn.sync({ force: true }).then(() => { // Prueba Poner en force: false para revisión, de forma que se guarden datos en BD. Por default estaba en force: true // alter: true
+  server.listen(PORT, async () => {
+    await getAllTemps();
     console.log('%s listening at 3001'); // eslint-disable-line no-console
   });
 });
