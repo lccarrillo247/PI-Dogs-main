@@ -5,7 +5,7 @@ const getTempHandler = async (req, res) => {
         const allTemps = await getAllTemps()
         res.status(200).json(allTemps); // "Se ha creado la BD de Temperaments exitosamente"
     } catch (error) {
-        res.status(500).json({error: error.message})
+        res.status(400).json({error: error.message})
     }
 };
 

@@ -11,11 +11,11 @@ module.exports = (sequelize) => {
     },
     image: {
       type: DataTypes.STRING,
-      unique: true,
       allowNull: false,
     },
     name: {
       type: DataTypes.STRING,
+      unique: true,
       allowNull: false,
     },
     height: {
@@ -30,6 +30,10 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    created: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true,
+    }
   },
   { timestamps: false }
   );

@@ -4,7 +4,7 @@ const axios = require('axios');
 
 const getAllDogs = async () => {
     const {data} = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`);
-    const allDogsApi = data.map((dog) => ({
+    const allDogsApi = data.map((dog) => ({ // Buena práctica: Esta función de limpiar info se puede guardar en carpeta utils dentro de src para usarla en los controllers
         id: dog.id,
         image: dog.image.url,
         name: dog.name,
@@ -12,6 +12,7 @@ const getAllDogs = async () => {
         weight: dog.weight.metric,
         life_span: dog.life_span,
         temperament: dog.temperament,
+        created: false, //sirve para diferenciar si vino de la API o si fue creado desde la BD. También se podría con isNan id (?)
     }))
 
     const allDogsDb = await Dogs.findAll({
@@ -24,14 +25,31 @@ const getAllDogs = async () => {
         },
     });
 
-    const allDogs = [...allDogsApi,...allDogsDb]
-    return allDogs;
+    return [...allDogsApi,...allDogsDb];
 };
 
 const getDogByName = async (name) => {
     const dogsApi = (await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`)).data;
-    const dogApi = dogsApi.filter((dog) => dog.name.toLowerCase() === name.toLowerCase()) // limpiar estructura de datos / coincidencia parcial (?)
-    const dogDb = await Dogs.findAll({where: {name: name}}); // Case sensitive y parcial
+    const dogApi = dogsApi.filter((dog) => dog.name.toLowerCase() === name.toLowerCase()).map((dog) => ({
+        id: dog.id,
+        image: dog.image.url,
+        name: dog.name,
+        height: dog.height.metric,
+        weight: dog.weight.metric,
+        life_span: dog.life_span,
+        temperament: dog.temperament,
+        created: false,
+    })) // coincidencia parcial (?)
+    const dogDb = await Dogs.findAll({
+        where: {name: name}, // Case sensitive y parcial
+        include: {
+            model: Temperaments,
+            attributes: ["name"],
+            through: {
+                attributes: []
+            },
+        },
+    });
     if (dogApi.length === 0 && dogDb.length === 0) {
         throw new Error(`La raza ${name} no existe en la base de datos`)
     } else {
@@ -42,7 +60,15 @@ const getDogByName = async (name) => {
 const getDogById = async (idRaza) => {
     console.log(idRaza)
     if (Number.isNaN(Number(idRaza))) {
-    const dog = await Dogs.findByPk(idRaza);
+    const dog = await Dogs.findByPk(idRaza, {
+        include: {
+            model: Temperaments,
+            attributes: ["name"],
+            through: {
+                attributes: []
+            },
+        },
+    }); // Asociar Temperaments?
     return dog;
     } else {
     const {data} = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`);
@@ -55,12 +81,13 @@ const getDogById = async (idRaza) => {
         weight: dog.weight.metric,
         life_span: dog.life_span,
         temperament: dog.temperament,
+        created: false,
     }))
     return dogByIdApi;
     }
 }
 
-const createDogDB = async (image, name, height, weight, life_span, temperaments) => {
+const createDogDB = async (image, name, height, weight, life_span, temperament) => {
     const newDog = await Dogs.create({
         image: image,
         name: name,
@@ -69,12 +96,10 @@ const createDogDB = async (image, name, height, weight, life_span, temperaments)
         life_span: life_span,
     });
 
-    await newDog.addTemperaments(temperaments);
+    await newDog.addTemperaments(temperament); // Revisar esta línea, acá se deberían agregar los temperaments
 
     return newDog;
 };
-
-// 1:18 video 2 dasdsdas
 
 module.exports = {
     createDogDB,

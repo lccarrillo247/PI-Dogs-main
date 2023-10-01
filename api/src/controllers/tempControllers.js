@@ -15,8 +15,8 @@ const getAllTemps = async () => {
         const sinNull = temps.filter((temp) => temp !== null);
         const soloStrings = sinNull.join(",").trim().split(",");
         const sinEspacios = soloStrings.map(temp => temp.trim());
-        const uniqueTemps = [...new Set(sinEspacios)];
-        const finalTemps = uniqueTemps.filter(temp => temp !== "").sort();
+        const sinRepetidos = [...new Set(sinEspacios)];
+        const finalTemps = sinRepetidos.filter(temp => temp !== "").sort();
   
         finalTemps.forEach(temp => {
             Temperaments.findOrCreate({where: {name: temp}})
