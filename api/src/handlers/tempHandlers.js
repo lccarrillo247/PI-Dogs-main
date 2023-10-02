@@ -9,8 +9,6 @@ const getTempHandler = async (req, res) => {
     }
 };
 
-// Cómo foxys hacer que se inicie al iniciar el servidor???
-
 module.exports ={
     getTempHandler,
 }

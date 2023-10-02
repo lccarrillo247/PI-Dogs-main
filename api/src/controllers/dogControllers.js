@@ -40,7 +40,7 @@ const getDogByName = async (name) => {
         life_span: dog.life_span,
         temperament: dog.temperament,
         created: false,
-    })) // coincidencia parcial (?)
+    }))
     const dogDb = await Dogs.findAll({where: {name: {
         [Op.iLike]: `%${name}%`
     }
@@ -99,7 +99,7 @@ const createDogDB = async (image, name, height, weight, life_span, temperament) 
         life_span: life_span,
     });
 
-    await newDog.addTemperaments(temperament); // Revisar esta línea, acá se deberían agregar los temperaments
+    await newDog.addTemperaments(temperament);
 
     return newDog;
 };
