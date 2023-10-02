@@ -27,7 +27,7 @@ try {
     res.status(400).json('No se recibieron todos los campos esperados')
     } else {
         const createDog = await createDogDB(image, name, height, weight, life_span, temperament);
-    res.status(200).json({createDog})//`Se creó exitosamente la raza ${name} en la base de datos`;
+    res.status(200).json(createDog)//`Se creó exitosamente la raza ${name} en la base de datos`;
     }
 } catch (error) {
     res.status(400).json({error: error.message});

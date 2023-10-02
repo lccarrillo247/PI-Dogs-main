@@ -1,6 +1,7 @@
 const {Dogs, Temperaments, dogsTemperaments} = require('../db')
 const {API_KEY} = process.env;
 const axios = require('axios');
+const {Op} =require('sequelize')
 
 const getAllDogs = async () => {
     const {data} = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`);
@@ -30,7 +31,7 @@ const getAllDogs = async () => {
 
 const getDogByName = async (name) => {
     const dogsApi = (await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`)).data;
-    const dogApi = dogsApi.filter((dog) => dog.name.toLowerCase() === name.toLowerCase()).map((dog) => ({
+    const dogApi = dogsApi.filter((dog) => dog.name.toLowerCase().includes(name.toLowerCase())).map((dog) => ({
         id: dog.id,
         image: dog.image.url,
         name: dog.name,
@@ -40,8 +41,10 @@ const getDogByName = async (name) => {
         temperament: dog.temperament,
         created: false,
     })) // coincidencia parcial (?)
-    const dogDb = await Dogs.findAll({
-        where: {name: name}, // Case sensitive y parcial
+    const dogDb = await Dogs.findAll({where: {name: {
+        [Op.iLike]: `%${name}%`
+    }
+},
         include: {
             model: Temperaments,
             attributes: ["name"],
@@ -68,7 +71,7 @@ const getDogById = async (idRaza) => {
                 attributes: []
             },
         },
-    }); // Asociar Temperaments?
+    });
     return dog;
     } else {
     const {data} = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`);
