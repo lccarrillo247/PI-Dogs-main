@@ -1,3 +1,8 @@
-.card {
-    background-color: darkslateblue;
+.cardContainer {
+    background-color:midnightblue;
+    width: 250px;
+}
+
+.cardImage {
+    width: 100%;
 }

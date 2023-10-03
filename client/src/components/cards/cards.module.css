@@ -1,3 +1,7 @@
-.cards {
-    background-color: darkgoldenrod;
+.cardsContainer {
+    width: 85vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 20px;
+    background-color:aliceblue;
 }
