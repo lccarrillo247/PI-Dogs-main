@@ -1,4 +1,4 @@
-const {getAllTemps} = require('../controllers/tempControllers')
+const {getAllTemps, getTemps} = require('../controllers/tempControllers')
 
 const getTempHandler = async (req, res) => {
     try {
@@ -9,6 +9,16 @@ const getTempHandler = async (req, res) => {
     }
 };
 
+const getTempFormHandler = async (req, res) => {
+    try {
+        const tempBd = await getTemps();
+        res.status(200).json(tempBd)
+    } catch (error) {
+        res.status(400).json({error: error.message})
+    }
+}
+
 module.exports ={
     getTempHandler,
+    getTempFormHandler
 }

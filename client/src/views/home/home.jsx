@@ -10,6 +10,9 @@ export default function Home() {
 const dispatch = useDispatch();
 const allDogs = useSelector((state)=>state.allDogs);
 
+const [pagina, setPagina] = useState(1);
+const [input, setInput] = useState(1);
+
 // Filtro con el backend
 const [searchString, setSearchString] = useState("");
 
@@ -20,8 +23,10 @@ function handleChange(e){
 
 function handleSubmit (e) {
     e.preventDefault()
+    setPagina(1)
+    setInput(1)
     dispatch(getByName(searchString))
-}
+};
 
 // filtro sobre el esado (front, video repaso Gama)
 // const [filtered, setFiltered] = useState(allDogs); // intentar después con dogsCopy. Traer por useSelector
@@ -43,7 +48,13 @@ useEffect(()=>{
     return (
         <div className={styles.home}>
             <Navbar handleChange={handleChange} handleSubmit={handleSubmit} />
-            <Cards allDogs={allDogs} />
+            <Cards
+            allDogs={allDogs}
+            pagina={pagina}
+            setPagina={setPagina}
+            input={input}
+            setInput={setInput}
+            />
         </div>
     )
 };

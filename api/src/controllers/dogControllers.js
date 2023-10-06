@@ -86,7 +86,7 @@ const getDogById = async (idRaza) => {
         temperament: dog.temperament,
         created: false,
     }))
-    return dogByIdApi;
+    return dogByIdApi.pop();
     }
 }
 
@@ -101,7 +101,7 @@ const createDogDB = async (image, name, height, weight, life_span, temperament) 
 
     await newDog.addTemperaments(temperament);
 
-    return newDog;
+    return `Se creó exitosamente la raza ${name} en la base de datos`;
 };
 
 module.exports = {

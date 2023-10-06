@@ -23,7 +23,7 @@ const getDogByIdHandler = async (req, res) => {
 const postDogHandler = async (req, res) => {
 const {image, name, height, weight, life_span, temperament} = req.body; // Por qué no me piden image en el from del front? Validar con asesor
 try {
-    if (!image || !name || !height || !weight || !life_span) { // Repasar si temperaments es opcional
+    if (!image || !name || !height || !weight || !life_span) {
     res.status(400).json('No se recibieron todos los campos esperados')
     } else {
         const createDog = await createDogDB(image, name, height, weight, life_span, temperament);

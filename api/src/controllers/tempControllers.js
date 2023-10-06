@@ -27,6 +27,12 @@ const getAllTemps = async () => {
     }
 };
 
+const getTemps = async () => {
+    const allTemps = await Temperaments.findAll();
+    return allTemps;
+}
+
 module.exports ={
     getAllTemps,
+    getTemps
 }
