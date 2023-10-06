@@ -60,11 +60,22 @@ function rootReducer(state = initialState ,action) {
                                 allDogs: [...sorted],
                             }
                             case FILTER_BY_ORIGIN:
+
+                            let filtered = [];
+
+                            if(action.payload === "Todos"){
+                                filtered = state.dogsCopy.filter((dog) => dog.id)
+                            }
+                            if (action.payload === 'API'){
+                                filtered = state.dogsCopy.filter((dog) => dog.created === false)
+                            }
+                            if (action.payload === 'Base de datos'){
+                                filtered = state.dogsCopy.filter((dog) => dog.created === true)
+                            }
+
                             return {
                                     ...state,
-                                    allDogs: state.allDogs.filter(
-                                        (dog) => dog.created === action.payload
-                                    )
+                                    allDogs: filtered
                                 }
         default:
             return state;

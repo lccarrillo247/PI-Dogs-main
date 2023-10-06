@@ -28,6 +28,8 @@ function handleSubmit (e) {
     dispatch(getByName(searchString))
 };
 
+console.log(allDogs)
+
 // filtro sobre el esado (front, video repaso Gama)
 // const [filtered, setFiltered] = useState(allDogs); // intentar después con dogsCopy. Traer por useSelector
 

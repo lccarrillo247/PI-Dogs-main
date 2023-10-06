@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import styles from './navbar.module.css';
 import { useDispatch } from 'react-redux';
-import { sortByName, sortByWeight } from '../../redux/actions';
+import { sortByName, sortByWeight, filterByOrigin } from '../../redux/actions';
 
 export default function Navbar({handleChange, handleSubmit}) {
 
@@ -16,7 +16,7 @@ export default function Navbar({handleChange, handleSubmit}) {
     }
 
     function handleFilterOrigin(e) {
-
+        dispatch(filterByOrigin(e.target.value));
     }
 
     return (
@@ -30,33 +30,33 @@ export default function Navbar({handleChange, handleSubmit}) {
         </form>
         </div>
         <div>
-        <form>
+
             <select>
 
             </select>
 
-        </form>
         </div>
         <div>
-        <form>
             <select
-            placeHolder='Filtrar por origen' onChange={handleFilterOrigin}>
-                <option key='API' value={false}>
+            placeholder='Filtrar por origen' onChange={handleFilterOrigin}>
+                <option key='Todos' value='Todos'>
+                    Todos
+                </option>
+                <option key='API' value='API'>
                     API
                 </option>
-                <option key='Base de datos' value={true}>
+                <option key='Base de datos' value='Base de datos'>
                     Base de datos
                 </option>
             </select>
             <button>
                 Filtrar
             </button>
-        </form>
         </div>
         <div>
-        <form>
+
             <select
-            placeHolder='Ordenar por raza' onChange={handleOrderName}
+            placeholder='Ordenar por raza' onChange={handleOrderName}
             >
             {["Ascendente", "Descendente"].map(order => (
                 <option key={order} value={order}>
@@ -67,12 +67,12 @@ export default function Navbar({handleChange, handleSubmit}) {
             <button type="submit">
                 Ordenar
             </button>
-        </form>
+
         </div>
         <div>
-        <form>
+
             <select
-            placeHolder='Ordenar por peso' onChange={handleOrderWeight}
+            placeholder='Ordenar por peso' onChange={handleOrderWeight}
             >
             {["Ascendente", "Descendente"].map(order => (
                 <option key={order} value={order}>
@@ -83,7 +83,7 @@ export default function Navbar({handleChange, handleSubmit}) {
             <button>
                 Ordenar
             </button>
-        </form>
+
         </div>
         <div>
             <NavLink to="/create" >

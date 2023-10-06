@@ -17,7 +17,7 @@ export default function Cards({allDogs, pagina, setPagina, input, setInput}) {
             (pagina -1) * porPagina,
             (pagina - 1) * porPagina + porPagina
         ).map((dog) => (
-            <Card dog={dog} />
+            <Card dog={dog} key={dog.id} />
         ))}
         <Pagination
         pagina={pagina}

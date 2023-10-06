@@ -26,7 +26,7 @@ const getAllDogs = async () => {
         },
     });
 
-    return [...allDogsApi,...allDogsDb];
+    return [...allDogsDb,...allDogsApi];
 };
 
 const getDogByName = async (name) => {
