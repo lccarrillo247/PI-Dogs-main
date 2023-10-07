@@ -1,11 +1,17 @@
 import { NavLink } from 'react-router-dom';
 import styles from './navbar.module.css';
-import { useDispatch } from 'react-redux';
-import { sortByName, sortByWeight, filterByOrigin } from '../../redux/actions';
+import { useDispatch, useSelector } from 'react-redux';
+import { getTemps, sortByName, sortByWeight, filterByOrigin } from '../../redux/actions';
+import { useEffect } from 'react';
 
 export default function Navbar({handleChange, handleSubmit}) {
 
     const dispatch = useDispatch();
+    const temps = useSelector((state) => state.temps);
+
+    useEffect( async () => {
+        dispatch(getTemps())
+    }, [])
 
     function handleOrderName(e) {
         dispatch(sortByName(e.target.value));
@@ -30,11 +36,17 @@ export default function Navbar({handleChange, handleSubmit}) {
         </form>
         </div>
         <div>
-
-            <select>
-
+            <select
+            multiple
+            placeholder='Filtrar por temperamento'
+            // onChange={""}
+            >
+            {temps?.map((temp) => (
+                <option key={temp.id} value={temp.name}>
+                    {temp.name}
+                </option>
+            ))}
             </select>
-
         </div>
         <div>
             <select

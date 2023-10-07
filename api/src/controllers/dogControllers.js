@@ -12,7 +12,9 @@ const getAllDogs = async () => {
         height: dog.height.metric,
         weight: dog.weight.metric,
         life_span: dog.life_span,
-        temperament: dog.temperament,
+        Temperaments: dog.temperament?.split(', ').map((temp) => ({
+            "name": temp
+        })),
         created: false, //sirve para diferenciar si vino de la API o si fue creado desde la BD. También se podría con isNan id (?)
     }))
 
@@ -38,7 +40,9 @@ const getDogByName = async (name) => {
         height: dog.height.metric,
         weight: dog.weight.metric,
         life_span: dog.life_span,
-        temperament: dog.temperament,
+        Temperaments: dog.temperament?.split(', ').map((temp) => ({
+            "name": temp
+        })),
         created: false,
     }))
     const dogDb = await Dogs.findAll({where: {name: {
@@ -83,14 +87,16 @@ const getDogById = async (idRaza) => {
         height: dog.height.metric,
         weight: dog.weight.metric,
         life_span: dog.life_span,
-        temperament: dog.temperament,
+        Temperaments: dog.temperament?.split(', ').map((temp) => ({
+            "name": temp
+        })),
         created: false,
     }))
     return dogByIdApi.pop();
     }
 }
 
-const createDogDB = async (image, name, height, weight, life_span, temperament) => {
+const createDogDB = async (image, name, height, weight, life_span, temperaments) => {
     const newDog = await Dogs.create({
         image: image,
         name: name,
@@ -99,7 +105,7 @@ const createDogDB = async (image, name, height, weight, life_span, temperament) 
         life_span: life_span,
     });
 
-    await newDog.addTemperaments(temperament);
+    await newDog.addTemperaments(temperaments);
 
     return `Se creó exitosamente la raza ${name} en la base de datos`;
 };

@@ -17,7 +17,7 @@ export default function Detail() {
 
     console.log(dogId);
 
-    const {id, image,name,height,weight,life_span,temperament} = dogId;
+    const {id, image,name,height,weight,life_span,Temperaments} = dogId;
 
     return (
         <div className={styles.detail}>
@@ -27,7 +27,7 @@ export default function Detail() {
             <p>{name}</p>
             <p>{height}</p>
             <p>{weight}</p>
-            <p>{temperament}</p>
+            <p>{Temperaments?.map((temp) => temp.name).sort().join(', ')}</p>
             <p>{life_span}</p>
         </div>
     )
