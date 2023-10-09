@@ -6,7 +6,7 @@ export default function Card({dog}) {
 const {id,image,name,height,weight,life_span,Temperaments} = dog;
 
     return (
-        <Link to={`/home/${id}`}>
+        <Link to={`/detail/${id}`}>
         <div className={styles.cardContainer}>
             <h1>{name}</h1>
         <img className={styles.cardImage} src={image} alt={name} />

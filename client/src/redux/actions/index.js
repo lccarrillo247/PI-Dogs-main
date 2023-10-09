@@ -77,3 +77,17 @@ export function filterByOrigin(origin){
         payload: origin
     }
 };
+
+export function filterByTemp(tempArray){
+    if(tempArray[0] === "Todos") {
+        return {
+            type: 'FILTER_BY_TEMP',
+            payload: 'Todos'
+        }
+    } else {
+    return {
+        type: 'FILTER_BY_TEMP',
+        payload: tempArray
+    }
+}
+};

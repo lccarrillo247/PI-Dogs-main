@@ -1,13 +1,17 @@
 import { NavLink } from 'react-router-dom';
 import styles from './navbar.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { getTemps, sortByName, sortByWeight, filterByOrigin } from '../../redux/actions';
-import { useEffect } from 'react';
+import { getDogs, getTemps, sortByName, sortByWeight, filterByOrigin, filterByTemp } from '../../redux/actions';
+import { useEffect, useState } from 'react';
 
 export default function Navbar({handleChange, handleSubmit}) {
 
     const dispatch = useDispatch();
     const temps = useSelector((state) => state.temps);
+
+    const [tempFilter, setTempFilter] = useState({
+        tempArray: [],
+    })
 
     useEffect( async () => {
         dispatch(getTemps())
@@ -25,8 +29,34 @@ export default function Navbar({handleChange, handleSubmit}) {
         dispatch(filterByOrigin(e.target.value));
     }
 
+    function handleFilterTemps(e) {
+        const selectedOptions = Array.from(e.target.selectedOptions, (option) =>
+        option.value)
+        setTempFilter({
+            ...tempFilter,
+            tempArray: selectedOptions,
+        })
+    }
+    
+    function handleSubmitFT() {
+        dispatch(filterByTemp(tempFilter.tempArray));
+    }
+
+    function handleReset() {
+        dispatch(getDogs());
+    }
+
+    console.log(tempFilter)
+
     return (
         <div className={styles.navbar}>
+        <div>
+            <NavLink to="/" >
+                <button>
+                    Inicio
+                </button>
+            </NavLink>
+        </div>
         <div>
         <form onChange={(e) => handleChange(e)}>
         <input placeholder='Ingresa la raza del perro' type='search'/>
@@ -39,18 +69,22 @@ export default function Navbar({handleChange, handleSubmit}) {
             <select
             multiple
             placeholder='Filtrar por temperamento'
-            // onChange={""}
+            onChange={handleFilterTemps}
             >
+                <option>Todos</option>
             {temps?.map((temp) => (
                 <option key={temp.id} value={temp.name}>
                     {temp.name}
                 </option>
             ))}
             </select>
+            <button onClick={handleSubmitFT}>Filtrar</button>
         </div>
         <div>
             <select
-            placeholder='Filtrar por origen' onChange={handleFilterOrigin}>
+            placeholder='Filtrar por origen'
+            onChange={handleFilterOrigin}
+            >
                 <option key='Todos' value='Todos'>
                     Todos
                 </option>
@@ -61,12 +95,9 @@ export default function Navbar({handleChange, handleSubmit}) {
                     Base de datos
                 </option>
             </select>
-            <button>
-                Filtrar
-            </button>
+            {/* <button>Filtrar</button> */}
         </div>
         <div>
-
             <select
             placeholder='Ordenar por raza' onChange={handleOrderName}
             >
@@ -76,10 +107,7 @@ export default function Navbar({handleChange, handleSubmit}) {
                 </option>
             ))}
             </select>
-            <button type="submit">
-                Ordenar
-            </button>
-
+            {/* <button>Ordenar</button> */}
         </div>
         <div>
 
@@ -92,10 +120,13 @@ export default function Navbar({handleChange, handleSubmit}) {
                 </option>
             ))}
             </select>
-            <button>
-                Ordenar
-            </button>
+            {/* <button>Ordenar</button> */}
 
+        </div>
+        <div>
+            <button onClick={handleReset}>
+                Reiniciar filtros
+            </button>
         </div>
         <div>
             <NavLink to="/create" >

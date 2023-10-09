@@ -1,3 +1,56 @@
-.landing {
-    background-color: aqua;
+.landingBackground {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-image: url('C:\Users\lccar\OneDrive\Desktop\HENRY\Bootcamp\PI\PI-Dogs-main\client\public\landingBackground.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+.landingContainer{
+    background-color: rgba(16, 29, 29, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 15px;
+    height: 350px;
+    width: 320px;
+}
+
+.landingTitle {
+    color: aliceblue;
+    margin: 0px 0px 45px 0px;
+    font-size: 38px;
+}
+
+.landingDescription {
+    color:aliceblue;
+    text-align: center;
+    margin: 0px 40px 0px 40px;
+    font-size: 16px;
+}
+
+.landingButton {
+    border-radius: 5px;
+    border: none;
+    height: 35px;
+    width: 140px;
+    margin: 50px 0px 0px 0px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    background: rgb(255,192,0);
+    background: radial-gradient(circle, rgba(255,192,0,1) 0%, rgba(46,37,1,1) 100%);
+}
+
+.landingButton:hover {
+    transform: scale(1.1);
+}
+/*min 49*/
