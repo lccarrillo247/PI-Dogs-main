@@ -111,7 +111,7 @@ function handleChangeTemps(e){
 const handleSubmit = async (e) => {
     e.preventDefault();
     if (!input.name || errors.image || errors.life_span || errors.maxheight || errors.maxweight || errors.minheight || errors.minweight || errors.name) {
-        alert('Completa los campos de forma correcta para crear al perro')
+        alert('Completa los campos de forma correcta para crear el perro')
     } else {
 
     let newDog = {
@@ -139,8 +139,9 @@ const handleSubmit = async (e) => {
 
 return (
     <div className={styles.form}>
-        <h3>Completa la información del formulario para crear tu perro</h3>
+        <h3 className={styles.formTitle}>Completa los campos del formulario para crear tu perro</h3>
         <form onSubmit={handleSubmit}>
+            <div className={styles.labelInput}>
         <label>Nombre de la raza:</label>
         <input
         className={styles.formInput}
@@ -148,7 +149,10 @@ return (
         name="name" 
         value={input.name}
         onChange={handleChange}/>
-        {errors.name && <p>{errors.name}</p>}
+        {errors.name && <p className={styles.formError}>{errors.name}</p>}
+            </div>
+            <div className={styles.doubleInput}>
+            <div className={styles.labelInput}>
         <label>Altura mínima (en cm):</label>
         <input 
         className={styles.formInput}
@@ -158,7 +162,9 @@ return (
         name="minheight" 
         value={input.minheight} 
         onChange={handleChange}/>
-        {errors.minheight && <p>{errors.minheight}</p>}
+        {errors.minheight && <p className={styles.formError}>{errors.minheight}</p>}
+            </div>
+            <div className={styles.labelInput}>
         <label>Altura máxima (en cm):</label>
         <input 
         className={styles.formInput}
@@ -168,7 +174,11 @@ return (
         name="maxheight" 
         value={input.maxheight} 
         onChange={handleChange}/>
-        {errors.maxheight && <p>{errors.maxheight}</p>}
+        {errors.maxheight && <p className={styles.formError}>{errors.maxheight}</p>}
+            </div>
+            </div>
+            <div className={styles.doubleInput}>
+            <div className={styles.labelInput}>
         <label>Peso mínimo (en kg):</label>
         <input 
         className={styles.formInput}
@@ -178,7 +188,9 @@ return (
         name="minweight" 
         value={input.minweight} 
         onChange={handleChange}/>
-        {errors.minweight && <p>{errors.minweight}</p>}
+        {errors.minweight && <p className={styles.formError}>{errors.minweight}</p>}          
+            </div>
+            <div className={styles.labelInput}>
         <label>Peso máximo (en kg):</label>
         <input 
         className={styles.formInput}
@@ -188,7 +200,11 @@ return (
         name="maxweight" 
         value={input.maxweight} 
         onChange={handleChange}/>
-        {errors.maxweight && <p>{errors.maxweight}</p>}
+        {errors.maxweight && <p className={styles.formError}>{errors.maxweight}</p>}
+            </div>
+            </div>
+            <div className={styles.doubleInput}>
+            <div className={styles.labelInput}>
         <label>Años de vida:</label>
         <input 
         className={styles.formInput}
@@ -198,10 +214,23 @@ return (
         name="life_span" 
         value={input.life_span} 
         onChange={handleChange}/>
-        {errors.life_span && <p>{errors.life_span}</p>}
-        <label>Temperamento:</label>
+        {errors.life_span && <p className={styles.formError}>{errors.life_span}</p>}
+            </div>
+            <div className={styles.labelInput}>
+            <label>Imagen (url):</label>
+            <input 
+            className={styles.formInput}
+            type="text"
+            name="image" 
+            value={input.image} 
+            onChange={handleChange}/>
+            {errors.image && <p className={styles.formError}>{errors.image}</p>}
+            </div>
+            </div>
+            <div className={styles.tempContainer}>
+        <label className={styles.tempLabel}>Temperamento:</label>
         <select
-        className={styles.formInput}
+        className={styles.tempInput}
         multiple
         id="temperament"
         name="temperament"
@@ -213,15 +242,10 @@ return (
             </option>
         ))}
         </select>
-        <label>Imagen (url):</label>
-        <input 
-        className={styles.formInput}
-        type="text"
-        name="image" 
-        value={input.image} 
-        onChange={handleChange}/>
-        {errors.image && <p>{errors.image}</p>}
-        <button type="submit">¡Crear perro!</button>
+            </div>
+            <div className={styles.formButtonContainer}>
+        <button className={styles.formButton}type="submit">¡Crear perro!</button>
+            </div>
         </form>
         </div>
     )

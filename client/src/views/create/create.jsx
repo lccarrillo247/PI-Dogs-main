@@ -5,15 +5,16 @@ import { NavLink } from 'react-router-dom';
 export default function Create() {
     return (
         <div className={styles.create}>
-                        <div>
+                        <div className={styles.createNavbar}>
                 <NavLink to="/home" >
                     <button>
                     Regresar
                     </button>
                 </NavLink> 
             </div>
-            <h1>Create</h1>
+            <div className={styles.formContainer}>
             <Form />
+            </div>
         </div>
     )
 };

@@ -1,3 +1,29 @@
 .create {
-    background-color: cornflowerblue;
+    background-color:rgb(241, 241, 241);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-image: url('C:\Users\lccar\OneDrive\Desktop\HENRY\Bootcamp\PI\PI-Dogs-main\client\public\createBackground.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.createNavbar {
+    background: rgb(13,153,186);
+    background: linear-gradient(90deg, rgba(13,153,186,1) 0%, rgba(81,189,175,1) 100%);
+    width: 100vw;
+    height: 40px;
+    margin-bottom: 0px;
+    display: flex;
+    align-items: center;
+}
+
+.formContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
 }

@@ -1,10 +1,96 @@
 .form {
-    background-color: gray;
+    background-color: rgba(16, 29, 29, 0.9);
     display: flex;
     flex-direction: column;
-    width: 320px;
+    align-items: center;
+    justify-content: center;
+    width: 700px;
+    height: 550px;
+    border-radius: 15px;
+}
+
+.formTitle {
+    color: aliceblue;
+    margin: -50px 0px 10px 0px;
+}
+
+.labelInput {
+    display: flex;
+    flex-direction: column;
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+.doubleInput {
+    display: flex;
+    flex-direction: row;
+}
+
+label {
+    font-weight: bold;
+    font-size: 14px;
+    background: rgb(255,192,0);
+    background: radial-gradient(circle, rgba(255,192,0,1) 0%, rgba(46,37,1,1) 100%);
+    width: 255px;
+    text-align: center;
+    margin-top: 25px;
 }
 
 .formInput {
-    width: 300px;
+    width: 250px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border-width: 0.5px;
+    height: 20px;
+}
+
+.tempContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 0px 10px 0px;
+}
+
+.tempLabel {
+    width: 200px;
+    margin-bottom: 20px;
+}
+
+.tempInput {
+    height: 55px;
+    width: 200px;
+}
+
+.formError {
+    color: red;
+    font-weight: bold;
+    font-size: 14px;
+    margin: 0px 0px 0px 0px;
+}
+
+.formButtonContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0px 0px -40px 0px;
+}
+
+.formButton {
+    color: aliceblue;
+    border-radius: 5px;
+    border: none;
+    height: 32px;
+    width: 140px;
+    margin: 0px 0px 0px 0px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    background: rgb(13,153,186);
+    background: linear-gradient(90deg, rgba(13,153,186,1) 0%, rgba(81,189,175,1) 100%);
+}
+
+.formButton:hover {
+    transform: scale(1.05);
+    background: rgb(13,153,186);
+    background: linear-gradient(90deg, rgb(0, 208, 255) 0%, rgb(52, 243, 218) 100%);
 }
