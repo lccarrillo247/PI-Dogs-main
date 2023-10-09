@@ -1,3 +1,81 @@
 .detail {
-    background-color: chartreuse;
+    height: 100vh;
+    width: 100%;
+    background: rgb(0,0,0);
+    background: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(16,50,43,1) 100%);
+}
+
+.detailNav {
+    background: rgb(13,153,186);
+    background: linear-gradient(90deg, rgba(13,153,186,1) 0%, rgba(81,189,175,1) 100%);
+    width: 100vw;
+    height: 40px;
+    margin-bottom: 0px;
+    display: flex;
+    align-items: center;
+}
+
+button {
+    margin-left: 20px;
+    border-radius: 3px;
+    border-width: 0.5px;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: aliceblue;
+}
+
+.detailContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.imageContainer {
+
+}
+
+.detailImage {
+    width: 700px;
+
+}
+
+.nameContainer {
+    background: rgb(255,192,0);
+    background: radial-gradient(circle, rgba(255,192,0,1) 0%, rgba(46,37,1,1) 100%);
+    margin-top: 0px;
+}
+
+.detailName {
+    text-align: center;
+    padding: 5px 0px 5px 0px;
+    margin-bottom: 0px;
+
+}
+
+.infoContainer {
+}
+
+
+
+h2 {
+    color: aliceblue;
+    margin: 70px 0px 80px 30px;
+}
+
+h3 {
+    color: aliceblue;
+    margin: 40px 0px 40px 30px;
+}
+
+.detailID {
+    color: aliceblue;
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 30px;
+    padding-left: 20px;
+    height: 30px;
+    border-radius: 5px;
+    background: rgb(13,153,186);
+    background: linear-gradient(90deg, rgba(13,153,186,1) 0%, rgba(81,189,175,1) 100%);
 }

@@ -1,7 +1,15 @@
+.cardsModule {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 .cardsContainer {
-    width: 85vw;
+    width: 100vw;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 20px;
-    background-color:aliceblue;
+    align-items: center;
+    justify-items: center;
+    background-color:rgb(241, 241, 241);
 }

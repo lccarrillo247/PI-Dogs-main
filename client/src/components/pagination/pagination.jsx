@@ -34,17 +34,17 @@ const onChange = (e) => {
 }
 
     return (
-        <div>
-        <button className={styles.pagButton} disabled={pagina < 2} onClick={prevPage}>anterior</button>
-        <input 
+        <div className={styles.pagContainer}>
+        <button className={styles.pagButton} disabled={pagina < 2} onClick={prevPage}>{'<'}</button>
+        <input className={styles.pagInput}
         onChange={(e) => onChange(e)}
         onKeyDown={e => onKeyDown(e)} 
         type="text" 
         name="page" 
         autoComplete='off' 
         value={input} />
-        <p> de {maximo} </p>
-        <button className={styles.pagButton} disabled={pagina >= maximo} onClick={nextPage}>siguiente</button>
+        <p className={styles.pagText}> de {maximo} </p>
+        <button className={styles.pagButton} disabled={pagina >= maximo} onClick={nextPage}>{'>'}</button>
         </div>
     )
 }

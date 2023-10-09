@@ -6,13 +6,15 @@ export default function Card({dog}) {
 const {id,image,name,height,weight,life_span,Temperaments} = dog;
 
     return (
-        <Link to={`/detail/${id}`}>
         <div className={styles.cardContainer}>
-            <h1>{name}</h1>
+            <Link to={`/detail/${id}`}>
         <img className={styles.cardImage} src={image} alt={name} />
-        <p>Peso: {weight}</p>
-        <p>Temperamento: {Temperaments?.map((temp) => temp.name).sort().join(', ')}</p>
-        </div>
         </Link>
+        <div className={styles.cardNameContainer}>
+        <h1 className={styles.cardName}>{name}</h1>
+        </div>
+        <p className={styles.cardWeight}>Peso (en Kg): {weight}</p>
+        <p className={styles.cardTemps}>{Temperaments?.map((temp) => temp.name).sort().join(', ')}</p>
+        </div>
     )
 };

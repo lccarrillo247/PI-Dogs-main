@@ -66,7 +66,7 @@ export default function Navbar({handleChange, handleSubmit}) {
         </form>
         </div>
         <div>
-            <select
+            <select className={styles.navbarFilterTemps}
             multiple
             placeholder='Filtrar por temperamento'
             onChange={handleFilterTemps}

@@ -12,20 +12,24 @@ export default function Cards({allDogs, pagina, setPagina, input, setInput}) {
     const dogList = allDogs;
 
     return (
-        <div className={styles.cardsContainer}>
+        <div className={styles.cardsModule}>
+            <div>
+            <Pagination
+            pagina={pagina}
+            setPagina={setPagina}
+            maximo={maximo}
+            input={input}
+            setInput={setInput}
+            />
+            </div>
+            <div className={styles.cardsContainer}>
         {dogList?.slice(
             (pagina -1) * porPagina,
             (pagina - 1) * porPagina + porPagina
         ).map((dog) => (
             <Card dog={dog} key={dog.id} />
         ))}
-        <Pagination
-        pagina={pagina}
-        setPagina={setPagina}
-        maximo={maximo}
-        input={input}
-        setInput={setInput}
-        />
+            </div>
         </div>
     )
 };

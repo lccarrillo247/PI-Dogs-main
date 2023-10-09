@@ -1,3 +1,40 @@
+.pagContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 45px;
+}
+
+
 .pagButton {
     cursor: pointer;
+    margin-left: 5px;
+    margin-right: 5px;
+    background: rgb(13,153,186);
+    background: linear-gradient(90deg, rgba(13,153,186,1) 0%, rgba(81,189,175,1) 100%);
+    border: none;
+    color: aliceblue;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+.pagButton:hover{
+    background: rgb(0, 217, 255);
+}
+
+.pagButton:disabled{
+    background: rgb(163, 163, 163);
+}
+
+.pagInput {
+    border-radius: 5px;
+    width: 30px;
+    text-align: center;
+    border-width: 0.5px;
+    border-color: rgb(114, 114, 114);
+}
+
+.pagText{
+    margin-left: 5px;
+    padding-bottom: 2px;
 }

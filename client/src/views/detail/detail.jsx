@@ -22,7 +22,7 @@ export default function Detail() {
 
     return (
         <div className={styles.detail}>
-            <div>
+            <div className={styles.detailNav}>
                 <NavLink to="/home" >
                     <button>
                     Regresar
@@ -34,14 +34,22 @@ export default function Detail() {
                     </button>
                 </NavLink>
             </div>
-            <p>Este es el create</p>
-            <h1>{id}</h1>
-            <img src={image} atl={name} />
-            <p>{name}</p>
-            <p>{height}</p>
-            <p>{weight}</p>
-            <p>{Temperaments?.map((temp) => temp.name).sort().join(', ')}</p>
-            <p>{life_span}</p>
+            <div className={styles.nameContainer}>
+            <h1 className={styles.detailName}>{name}</h1>
+            </div>
+            <div className={styles.detailContainer}>
+            <div className={styles.imageContainer}>
+            <img className={styles.detailImage} src={image} atl={name} />
+            </div>
+            <div className={styles.infoContainer}>
+            <h2>¡Consulta aquí toda la información de tu perro!</h2>
+            <h3>- Altura (en cm): {height}</h3>
+            <h3>- Peso (en Kg): {weight}</h3>
+            <h3>- Años de vida: {life_span}</h3>
+            <h3>- Temperamento: {Temperaments?.map((temp) => temp.name).sort().join(', ')}</h3>
+            <p className={styles.detailID}>ID: {id}</p>
+            </div>
+            </div>
         </div>
     )
 };

@@ -49,7 +49,10 @@ useEffect(()=>{
 
     return (
         <div className={styles.home}>
+            <div>
             <Navbar handleChange={handleChange} handleSubmit={handleSubmit} />
+            </div>
+            <div>
             <Cards
             allDogs={allDogs}
             pagina={pagina}
@@ -57,6 +60,7 @@ useEffect(()=>{
             input={input}
             setInput={setInput}
             />
+            </div>
         </div>
     )
 };
