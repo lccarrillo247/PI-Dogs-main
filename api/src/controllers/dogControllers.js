@@ -97,17 +97,25 @@ const getDogById = async (idRaza) => {
 }
 
 const createDogDB = async (image, name, height, weight, life_span, temperaments) => {
-    const newDog = await Dogs.create({
-        image: image,
-        name: name,
-        height: height,
-        weight: weight,
-        life_span: life_span,
-    });
+    
+    const check = await Dogs.findAll({where: {name: name}});
 
-    await newDog.addTemperaments(temperaments);
+    if (!check) {
 
-    return `Se creó exitosamente la raza ${name} en la base de datos`;
+        const newDog = await Dogs.create({
+            image: image,
+            name: name,
+            height: height,
+            weight: weight,
+            life_span: life_span,
+        });
+        
+        await newDog.addTemperaments(temperaments);
+        
+        return `Se creó exitosamente la raza ${name} en la base de datos`;
+    } else {
+        throw new Error(`Error: La raza ${name} ya existe en la base de datos`)
+    }
 };
 
 module.exports = {

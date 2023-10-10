@@ -7,7 +7,6 @@ const mainRouter = require('./routes/mainRouter.js');
 require('./db.js');
 
 const server = express();
-server.use(morgan("dev"));
 
 server.name = 'API';
 

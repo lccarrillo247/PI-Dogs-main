@@ -125,10 +125,19 @@ const handleSubmit = async (e) => {
 
     try {
         const response = await axios.post('http://localhost:3001/dogs/', newDog)
-        alert(`Se ha creado la raza ${input.name} exitosamente`)
-        // e.target.reset() Revisar por qué no funciona. La idea es limpiar los campos al enviar
+        alert(response.data)
+        setInput({
+            name: "",
+            minheight: "",
+            maxheight: "",
+            minweight: "",
+            maxweight: "",
+            life_span: "",
+            image: "",
+            temperament: [],
+        })
     } catch (error) {
-        alert(`Ha habido un error al crear la raza ${input.name}`) // Ajustar detalle de errores acá y en el back
+        alert(error.response.data.error) // `Ha habido un error al crear la raza ${input.name}`
     }
     }
 };
