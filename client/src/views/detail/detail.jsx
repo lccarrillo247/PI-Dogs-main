@@ -24,12 +24,12 @@ export default function Detail() {
         <div className={styles.detail}>
             <div className={styles.detailNav}>
                 <NavLink to="/home" >
-                    <button>
+                    <button className={styles.detailButton}>
                     Regresar
                     </button>
                 </NavLink> 
                 <NavLink to="/create" >
-                    <button>
+                    <button className={styles.detailButton}>
                     ¡Crea tu perro!
                     </button>
                 </NavLink>

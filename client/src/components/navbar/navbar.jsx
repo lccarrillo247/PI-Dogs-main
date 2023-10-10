@@ -57,15 +57,20 @@ export default function Navbar({handleChange, handleSubmit}) {
                 </button>
             </NavLink>
         </div>
-        <div>
         <form onChange={(e) => handleChange(e)}>
-        <input placeholder='Ingresa la raza del perro' type='search'/>
+        <div className={styles.searchContainer}>
+            <label className={styles.searchLabel}>Busca el perro por raza:</label>
+        <input className={styles.searchInput}placeholder='Ingresa la raza del perro' type='search'/>
             <button type='submit' onClick={handleSubmit}>
             Buscar
             </button>
-        </form>
         </div>
+        </form>
         <div>
+            <div className={styles.searchContainer}>
+        <label className={styles.filterLabel}>Filtra por temperamento:</label>
+            </div>
+            <div className={styles.tempFilterContainer}>
             <select className={styles.navbarFilterTemps}
             multiple
             placeholder='Filtrar por temperamento'
@@ -78,9 +83,11 @@ export default function Navbar({handleChange, handleSubmit}) {
                 </option>
             ))}
             </select>
-            <button onClick={handleSubmitFT}>Filtrar</button>
+            <button className={styles.tempFilterButton} onClick={handleSubmitFT}>Filtrar</button>
+            </div>
         </div>
-        <div>
+        <div className={styles.searchContainer}>
+            <label className={styles.filterLabel}>Filtra por origen:</label>
             <select
             placeholder='Filtrar por origen'
             onChange={handleFilterOrigin}
@@ -97,7 +104,8 @@ export default function Navbar({handleChange, handleSubmit}) {
             </select>
             {/* <button>Filtrar</button> */}
         </div>
-        <div>
+        <div className={styles.searchContainer}>
+        <label className={styles.filterLabel}>Ordena por raza:</label>
             <select
             placeholder='Ordenar por raza' onChange={handleOrderName}
             >
@@ -109,8 +117,8 @@ export default function Navbar({handleChange, handleSubmit}) {
             </select>
             {/* <button>Ordenar</button> */}
         </div>
-        <div>
-
+        <div className={styles.searchContainer}>
+        <label className={styles.filterLabel}>Ordena por peso:</label>
             <select
             placeholder='Ordenar por peso' onChange={handleOrderWeight}
             >

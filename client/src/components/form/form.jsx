@@ -142,7 +142,7 @@ return (
         <h3 className={styles.formTitle}>Completa los campos del formulario para crear tu perro</h3>
         <form onSubmit={handleSubmit}>
             <div className={styles.labelInput}>
-        <label>Nombre de la raza:</label>
+        <label className={styles.formLabel}>Nombre de la raza:</label>
         <input
         className={styles.formInput}
         type="text"
@@ -153,7 +153,7 @@ return (
             </div>
             <div className={styles.doubleInput}>
             <div className={styles.labelInput}>
-        <label>Altura mínima (en cm):</label>
+        <label className={styles.formLabel}>Altura mínima (en cm):</label>
         <input 
         className={styles.formInput}
         type="number"
@@ -165,7 +165,7 @@ return (
         {errors.minheight && <p className={styles.formError}>{errors.minheight}</p>}
             </div>
             <div className={styles.labelInput}>
-        <label>Altura máxima (en cm):</label>
+        <label className={styles.formLabel}>Altura máxima (en cm):</label>
         <input 
         className={styles.formInput}
         type="number"
@@ -179,7 +179,7 @@ return (
             </div>
             <div className={styles.doubleInput}>
             <div className={styles.labelInput}>
-        <label>Peso mínimo (en kg):</label>
+        <label className={styles.formLabel}>Peso mínimo (en kg):</label>
         <input 
         className={styles.formInput}
         type="number"
@@ -191,7 +191,7 @@ return (
         {errors.minweight && <p className={styles.formError}>{errors.minweight}</p>}          
             </div>
             <div className={styles.labelInput}>
-        <label>Peso máximo (en kg):</label>
+        <label className={styles.formLabel}>Peso máximo (en kg):</label>
         <input 
         className={styles.formInput}
         type="number"
@@ -205,7 +205,7 @@ return (
             </div>
             <div className={styles.doubleInput}>
             <div className={styles.labelInput}>
-        <label>Años de vida:</label>
+        <label className={styles.formLabel}>Años de vida:</label>
         <input 
         className={styles.formInput}
         type="number"
@@ -217,7 +217,7 @@ return (
         {errors.life_span && <p className={styles.formError}>{errors.life_span}</p>}
             </div>
             <div className={styles.labelInput}>
-            <label>Imagen (url):</label>
+            <label className={styles.formLabel}>Imagen (url):</label>
             <input 
             className={styles.formInput}
             type="text"

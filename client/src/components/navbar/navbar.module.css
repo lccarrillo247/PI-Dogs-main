@@ -2,11 +2,34 @@
     background: rgb(13,153,186);
     background: linear-gradient(90deg, rgba(13,153,186,1) 0%, rgba(81,189,175,1) 100%);
     width: 100vw;
-    height: 80px;
+    height: 85px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
+}
+
+.searchContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.searchLabel {
+    color: aliceblue;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.searchInput {
+    width: 165px;
+    margin: 2px 0px 3px 0px;
+}
+
+.tempFilterContainer {
+    display: flex;
+    align-items: center;
 }
 
 .navbarFilterTemps {
@@ -16,4 +39,15 @@
 .navbarFilterTemps:hover {
     height: 200px;
     margin-top: 150px;
+}
+
+.tempFilterButton {
+    margin: 0px 0px 0px 5px;
+}
+
+.filterLabel {
+    color: aliceblue;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 2px;
 }
