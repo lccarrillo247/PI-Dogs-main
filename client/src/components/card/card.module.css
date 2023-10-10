@@ -8,6 +8,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    transition: transform 0.25s ease-out;
 }
 
 .cardContainer:hover {

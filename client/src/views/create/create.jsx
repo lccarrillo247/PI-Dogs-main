@@ -7,7 +7,7 @@ export default function Create() {
         <div className={styles.create}>
                         <div className={styles.createNavbar}>
                 <NavLink to="/home" >
-                    <button>
+                    <button className={styles.createButtonBack}>
                     Regresar
                     </button>
                 </NavLink> 
