@@ -56,11 +56,34 @@ function rootReducer(state = initialState, action) {
             }
         case ORDER_BY_WEIGHT:
 
+            // if (action.payload === "Ascendente") {
+            //     sorted = state.allDogs.sort((a, b) => (a.weight > b.weight ? 1 : -1))
+            // }
+            // if (action.payload === "Descendente") {
+            //     sorted = state.allDogs.sort((a, b) => (b.weight > a.weight ? 1 : -1))
+            // }
+
             if (action.payload === "Ascendente") {
-                sorted = state.allDogs.sort((a, b) => (a.weight > b.weight ? 1 : -1))
+                sorted = state.allDogs.sort((a, b) => {
+                    const aValue = parseInt(a.weight.split(" - ")[0]);
+                    const bValue = parseInt(b.weight.split(" - ")[0]);
+
+                    if (aValue < bValue) return -1;
+                    if (aValue > bValue) return 1;
+
+                    return a.weight.localeCompare(b.weight);
+                })
             }
             if (action.payload === "Descendente") {
-                sorted = state.allDogs.sort((a, b) => (b.weight > a.weight ? 1 : -1))
+                sorted = state.allDogs.sort((a, b) => {
+                    const aValue = parseInt(a.weight.split(" - ")[0]);
+                    const bValue = parseInt(b.weight.split(" - ")[0]);
+
+                    if (aValue < bValue) return 1;
+                    if (aValue > bValue) return -1;
+
+                    return a.weight.localeCompare(b.weight);
+                })
             }
 
             return {

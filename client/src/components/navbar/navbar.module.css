@@ -36,10 +36,10 @@
     height: 50px;
 }
 
-.navbarFilterTemps:hover {
+/* .navbarFilterTemps:hover {
     height: 200px;
     margin-top: 150px;
-}
+} */
 
 .tempFilterButton {
     margin: 0px 0px 0px 5px;

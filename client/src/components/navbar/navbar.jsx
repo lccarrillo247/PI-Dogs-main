@@ -46,7 +46,7 @@ export default function Navbar({handleChange, handleSubmit}) {
         dispatch(getDogs());
     }
 
-    console.log(tempFilter)
+    // console.log(tempFilter)
 
     return (
         <div className={styles.navbar}>

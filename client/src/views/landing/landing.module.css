@@ -48,9 +48,12 @@
     cursor: pointer;
     background: rgb(255,192,0);
     background: radial-gradient(circle, rgba(255,192,0,1) 0%, rgba(46,37,1,1) 100%);
+    transition: transform 0.25s ease-out;
 }
 
 .landingButton:hover {
+    background: rgb(255,192,0);
+    background: radial-gradient(circle, rgb(253, 199, 36) 0%, rgb(82, 66, 2) 100%);
     transform: scale(1.05);
 }
 /*min 49*/

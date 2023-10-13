@@ -100,7 +100,7 @@ const createDogDB = async (image, name, height, weight, life_span, temperaments)
     
     const check = await Dogs.findAll({where: {name: name}});
 
-    if (!check) {
+    if (!check.length) {
 
         const newDog = await Dogs.create({
             image: image,
